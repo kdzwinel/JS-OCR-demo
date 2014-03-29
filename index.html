@@ -16,10 +16,14 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
-<body class="step1">
+<body ng-app="myApp" class="step1">
 
-<div class="container">
-    <div class="alert alert-danger"><strong>Oops!</strong> <span></span></div>
+<div class="container" ng-controller="OcrCtrl" ng-init="init()">
+    
+    <div class="alert alert-danger" ng-show="error.context">
+        <strong>Oops!</strong> <span>{{ error.context }}</span>
+    </div>
+
     <div class="jumbotron">
         <div id="step1">
             <h1><i class="glyphicon glyphicon-camera"></i></h1>
@@ -34,7 +38,8 @@
                 <video autoplay></video>
             </figure>
 
-            <button class="btn btn-lg btn-success" disabled id="takePicture">Take a picture</button>
+            <button class="btn btn-lg btn-success" disabled id="takePicture" 
+                    ng-click="step2(); changeStep(2)">Take a picture</button>
         </div>
         <div id="step2">
             <h1><i class="glyphicon glyphicon-pencil"></i></h1>
@@ -50,11 +55,16 @@
                 <img src=""/>
             </figure>
 
-            <p>Brightness: <input type="range" min="0" max="100" id="brightness" value="20"></p>
+            <p>Brightness: <input type="range" min="0" max="100" id="brightness" value="20"
+                                    ng-model="settings.brightness" 
+                                    ng-change="onChangePicture()"></p>
 
-            <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"></p>
+            <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"
+                                    ng-model="settings.settings" 
+                                    ng-change="onChangePicture()"></p>
 
-            <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>
+            <button class="btn btn-lg btn-success" id="adjust" disabled
+                    ng-click="step3(); changeStep(3);">Done</button>
         </div>
         <div id="step3">
             <h1><i class="glyphicon glyphicon-text-height"></i></h1>
@@ -70,16 +80,18 @@
                 <footer></footer>
             </blockquote>
 
-            <button class="btn btn-lg btn-default" id="go-back">Go back</button>
-            <button class="btn btn-lg btn-default" id="start-over">Start over</button>
+            <button class="btn btn-lg btn-default" id="go-back"
+                    ng-click="changeStep(2)">Go back</button>
+            <button class="btn btn-lg btn-default" id="start-over"
+                    ng-click="changeStep(1)">Start over</button>
         </div>
     </div>
 
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#" data-step="1">#1 <i class="glyphicon glyphicon-camera"></i></a></li>
-            <li class="disabled"><a href="#" data-step="2">#2 <i class="glyphicon glyphicon-pencil"></i></a></li>
-            <li class="disabled"><a href="#" data-step="3">#3 <i class="glyphicon glyphicon-text-height"></i></a></li>
+            <li class="active"><a href="#" ng-click="changeStep(1)">#1 <i class="glyphicon glyphicon-camera"></i></a></li>
+            <li class="disabled"><a href="#" ng-click="changeStep(2)">#2 <i class="glyphicon glyphicon-pencil"></i></a></li>
+            <li class="disabled"><a href="#" ng-click="changeStep(3)">#3 <i class="glyphicon glyphicon-text-height"></i></a></li>
         </ul>
         <h3 class="text-muted">JavaScript OCR demo</h3>
     </div>
@@ -154,13 +166,20 @@
 <!-- /container -->
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script src="js/vendor/angular.js"></script>
 <script src="js/vendor/modernizr.min.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/jquery.Jcrop.js"></script>
 <script src="js/vendor/ocrad.min.js"></script>
 <script src="js/vendor/glfx.min.js"></script>
+{# <script src="js/main.js"></script> #}
 
-<script src="js/main.js"></script>
+<!-- AngularJS ports -->
+
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+
 
 <!-- Social -->
 <script>!function (d, s, id) {
