@@ -195,7 +195,11 @@
             cropData.h * scale);
 
         //use ocrad.js to extract text from the canvas
-        var resultText = OCRAD(ctx);
+        //var resultText = OCRAD(ctx);
+        //Replaced OCRAD with Tesseract
+        Tesseract.recognize(ctx).then(function(result1){
+            var resultText=result1.text;
+        });
         resultText = resultText.trim();
 
         //show the result
