@@ -82,9 +82,7 @@
 
         getUserMedia(videoSettings, function (stream) {
             //Setup the video stream
-            video.src = window.URL.createObjectURL(stream);
-
-            window.stream = stream;
+            video.srcObject=stream;
 
             video.addEventListener("loadedmetadata", function (e) {
                 //get video width and height as it might be different than we requested
