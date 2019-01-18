@@ -198,10 +198,10 @@
 
             resultText = resultText.trim();
 
-        //show the result
-        $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-        $('blockquote footer').text('(' + resultText.length + ' characters)')
-        });
+            //show the result
+            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('blockquote footer').text('(' + resultText.length + ' characters)')
+            });
     }
 
     /*********************************
