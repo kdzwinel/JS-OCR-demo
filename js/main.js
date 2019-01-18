@@ -193,15 +193,13 @@
             cropData.h * scale);
 
         //Replaced OCRAD with Tesseract
-        Tesseract.recognize(ctx).then(function(result1){
-            var resultText = result1.text;
-
-            resultText = resultText.trim();
+        Tesseract.recognize(ctx).then(function(result) {
+            var resultText = result.text.trim();
 
             //show the result
             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-            $('blockquote footer').text('(' + resultText.length + ' characters)')
-            });
+            $('blockquote footer').text('(' + resultText.length + ' characters)');
+        });
     }
 
     /*********************************
