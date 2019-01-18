@@ -59,15 +59,14 @@
 
     function setupVideo(rearCameraId) {
         var deferred = new $.Deferred();
-        var getUserMedia = Modernizr.prefixed('getUserMedia', navigator);
         var videoSettings = {
             video: {
                 optional: [
                     {
-                        width: {min: pictureWidth}
+                        width: { min: pictureWidth }
                     },
                     {
-                        height: {min: pictureHeight}
+                        height: { min: pictureHeight }
                     }
                 ]
             }
@@ -80,33 +79,34 @@
             });
         }
 
-        getUserMedia(videoSettings, function (stream) {
-            //Setup the video stream
-            video.srcObject=stream;
+        navigator.mediaDevices.getUserMedia(videoSettings)
+            .then(function (stream) {
+                //Setup the video stream
+                video.srcObject = stream;
 
-            video.addEventListener("loadedmetadata", function (e) {
-                //get video width and height as it might be different than we requested
-                pictureWidth = this.videoWidth;
-                pictureHeight = this.videoHeight;
+                video.addEventListener("loadedmetadata", function (e) {
+                    //get video width and height as it might be different than we requested
+                    pictureWidth = this.videoWidth;
+                    pictureHeight = this.videoHeight;
 
-                if (!pictureWidth && !pictureHeight) {
-                    //firefox fails to deliver info about video size on time (issue #926753), we have to wait
-                    var waitingForSize = setInterval(function () {
-                        if (video.videoWidth && video.videoHeight) {
-                            pictureWidth = video.videoWidth;
-                            pictureHeight = video.videoHeight;
+                    if (!pictureWidth && !pictureHeight) {
+                        //firefox fails to deliver info about video size on time (issue #926753), we have to wait
+                        var waitingForSize = setInterval(function () {
+                            if (video.videoWidth && video.videoHeight) {
+                                pictureWidth = video.videoWidth;
+                                pictureHeight = video.videoHeight;
 
-                            clearInterval(waitingForSize);
-                            deferred.resolve();
-                        }
-                    }, 100);
-                } else {
-                    deferred.resolve();
-                }
-            }, false);
-        }, function () {
-            deferred.reject('There is no access to your camera, have you denied it?');
-        });
+                                clearInterval(waitingForSize);
+                                deferred.resolve();
+                            }
+                        }, 100);
+                    } else {
+                        deferred.resolve();
+                    }
+                }, false);
+            }).catch(function () {
+                deferred.reject('There is no access to your camera, have you denied it?');
+            });
 
         return deferred.promise();
     }
@@ -192,11 +192,17 @@
             cropData.w * scale,
             cropData.h * scale);
 
+        var spinner = $('.spinner');
+        spinner.show();
+        $('blockquote p').text('');
+        $('blockquote footer').text('');
+
         // do the OCR!
-        Tesseract.recognize(ctx).then(function(result) {
-            var resultText = result.text.trim();
+        Tesseract.recognize(ctx).then(function (result) {
+            var resultText = result.text ? result.text.trim() : '';
 
             //show the result
+            spinner.hide();
             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
             $('blockquote footer').text('(' + resultText.length + ' characters)');
         });

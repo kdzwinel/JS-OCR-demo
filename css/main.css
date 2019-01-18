@@ -1,22 +1,25 @@
 /* Space out content a bit */
+
 body {
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
+
+.header, .marketing, .footer {
     padding-right: 15px;
     padding-left: 15px;
 }
 
 /* Custom page header */
+
 .header {
     border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
+
 .header h3 {
     padding-bottom: 19px;
     margin-top: 0;
@@ -25,6 +28,7 @@ body {
 }
 
 /* Custom page footer */
+
 .footer {
     padding-top: 19px;
     color: #777;
@@ -32,20 +36,24 @@ body {
 }
 
 /* Customize container */
+
 @media (min-width: 768px) {
     .container {
         max-width: 730px;
     }
 }
-.container-narrow > hr {
+
+.container-narrow>hr {
     margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
+
 .jumbotron {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .jumbotron .btn {
     padding: 14px 24px;
     font-size: 21px;
@@ -62,19 +70,20 @@ body {
 }
 
 /* Supporting marketing content */
+
 .marketing {
     margin: 40px 0;
 }
-.marketing p + h4 {
+
+.marketing p+h4 {
     margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
+
 @media screen and (min-width: 768px) {
     /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
+    .header, .marketing, .footer {
         padding-right: 0;
         padding-left: 0;
     }
@@ -93,7 +102,7 @@ body.step1 #step2, body.step1 #step3 {
 }
 
 body.step2 #step1, body.step2 #step3 {
-     display: none;
+    display: none;
 }
 
 body.step3 #step1, body.step3 #step2 {
@@ -104,7 +113,7 @@ body.step3 #step1, body.step3 #step2 {
     display: none;
 }
 
-.jumbotron #step1 video, .jumbotron #step2 figure > img, .jumbotron #step3 figure > canvas {
+.jumbotron #step1 video, .jumbotron #step2 figure>img, .jumbotron #step3 figure>canvas {
     max-width: 100%;
 }
 
@@ -137,4 +146,52 @@ body.step3 #step1, body.step3 #step2 {
     top: 50%;
     margin-left: -85px;
     margin-top: -10px;
+}
+
+/* SPINNNER - credit to http://tobiasahlin.com/spinkit/ */
+
+.spinner {
+    margin: 10px auto 10px;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner>div {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
 }
