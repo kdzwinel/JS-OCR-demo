@@ -192,7 +192,7 @@
             cropData.w * scale,
             cropData.h * scale);
 
-        //Replaced OCRAD with Tesseract
+        // do the OCR!
         Tesseract.recognize(ctx).then(function(result) {
             var resultText = result.text.trim();
 
