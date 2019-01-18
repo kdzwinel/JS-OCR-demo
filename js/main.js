@@ -82,9 +82,7 @@
 
         getUserMedia(videoSettings, function (stream) {
             //Setup the video stream
-            video.src = window.URL.createObjectURL(stream);
-
-            window.stream = stream;
+            video.srcObject=stream;
 
             video.addEventListener("loadedmetadata", function (e) {
                 //get video width and height as it might be different than we requested
@@ -194,13 +192,14 @@
             cropData.w * scale,
             cropData.h * scale);
 
-        //use ocrad.js to extract text from the canvas
-        var resultText = OCRAD(ctx);
-        resultText = resultText.trim();
+        // do the OCR!
+        Tesseract.recognize(ctx).then(function(result) {
+            var resultText = result.text.trim();
 
-        //show the result
-        $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-        $('blockquote footer').text('(' + resultText.length + ' characters)')
+            //show the result
+            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('blockquote footer').text('(' + resultText.length + ' characters)');
+        });
     }
 
     /*********************************
