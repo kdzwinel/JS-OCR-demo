@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="css/jquery.Jcrop.min.css"/>
     <link rel="stylesheet" href="css/main.css"/>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145083566-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-145083566-1');
+    </script>
+
 </head>
 <body class="step1">
 
@@ -129,19 +140,6 @@
             <!-- Github button -->
             <iframe src="https://ghbtns.com/github-btn.html?user=kdzwinel&repo=JS-OCR-demo&type=watch&count=true"
                     allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
-
-            <!-- Twitter button -->
-            <a href="https://twitter.com/share" class="twitter-share-button"
-               data-url="http://kdzwinel.github.io/JS-OCR-demo/" data-via="kdzwinel">Tweet</a>
-
-            <!-- G+ button -->
-            <div class="g-plusone" data-size="medium" data-href="http://kdzwinel.github.io/JS-OCR-demo/"></div>
-
-            <!-- FB button -->
-            <div class="fb-like" data-href="http://kdzwinel.github.io/JS-OCR-demo/" data-layout="button_count"
-                 data-action="like"
-                 data-show-faces="false" data-share="true"></div>
-            <div id="fb-root"></div>
         </div>
     </div>
 
@@ -166,34 +164,6 @@
 <script src="js/vendor/glfx.min.js"></script>
 
 <script src="js/main.js"></script>
-
-<!-- Social -->
-<script>!function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-    if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = p + '://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-}(document, 'script', 'twitter-wjs');</script>
-<script type="text/javascript">
-    (function () {
-        var po = document.createElement('script');
-        po.type = 'text/javascript';
-        po.async = true;
-        po.src = 'https://apis.google.com/js/platform.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(po, s);
-    })();
-</script>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    
 </body>
 </html>
