@@ -225,6 +225,7 @@
           contentType: false,
           cache: false,
           success: (data) => {
+            $('.spinner').hide();
             console.log(data.data);
             const texts = data.data.TextDetections.map((item) => item.DetectedText);
             console.log(texts);

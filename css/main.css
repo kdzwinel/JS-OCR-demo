@@ -55,7 +55,7 @@ body {
 }
 
 .jumbotron .btn {
-    padding: 14px 24px;
+    /* padding: 14px 24px; */
     font-size: 21px;
 }
 
@@ -298,16 +298,25 @@ body.step3 #step1, body.step3 #step2 {
         margin-bottom: 25px;
     }
 
+    #step3 {
+        justify-content: start !important;
+        color: #111 !important;
+    }
+
     #step3 h3 {
         background-color: #fff;
         margin-top: 0;
         padding: 10px 0;
     }
 
-    #step3 {
-        /* align-items: flex-start; */
-        justify-content: start !important;
-        color: #111 !important;
+    #step3 .button-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    #step3 figure{
+        height: auto;
     }
 
     .spinner {
@@ -331,5 +340,9 @@ body.step3 #step1, body.step3 #step2 {
 
     .result-wrapper > div:not(:last-child) {
         border-bottom: 1px solid #e5e5e5;
+    }
+
+    .alert {
+        margin-bottom: 0px;
     }
 }

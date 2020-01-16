@@ -25,7 +25,7 @@
 <body class="step1">
 
 <div class="container">
-    <div class="alert alert-danger"><strong>Oops!</strong> <span></span></div>
+    <div class="alert alert-danger"><strong>Oops!</strong><span></span></div>
     <div class="jumbotron">
         <div id="step1">
             <figure class="not-ready">
@@ -49,12 +49,12 @@
             <button class="btn btn-lg btn-success" id="adjust" disabled>撷取</button>
         </div>
         <div id="step3">
-            <figure style="display: none;">
-                <canvas></canvas>
-            </figure>
 
             <blockquote>
                 <h3 class="text-center">录入体征</h3>
+                <figure>
+                    <canvas></canvas>
+                </figure>
                 <div class="result-wrapper">
                     <div id="sp">
                         <div class="title">收缩压</div>
@@ -69,11 +69,15 @@
                         <div class="value text-right">辨识中...</div>
                     </div>
                 </div>
+                <div class="button-wrapper">
+                    <button class="btn btn-sm btn-default" id="start-over">重新拍照</button>
+                </div>
                 <div class="spinner" style="display: none;">
                     <div class="bounce1"></div>
                     <div class="bounce2"></div>
                     <div class="bounce3"></div>
                 </div>
+                <!-- <footer></footer> -->
             </blockquote>
             <!-- <div class="button-wrapper">
                 <button class="btn btn-lg btn-default" id="go-back">回到撷取</button>
