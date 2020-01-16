@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>OCR demo</title>
-
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>OCR</title>
     <meta name="Description" content="Optical Character Recognition demo"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/jquery.Jcrop.min.css"/>
@@ -33,7 +31,9 @@
             <figure class="not-ready">
                 <video autoplay></video>
             </figure>
-            <button class="btn btn-lg btn-success" disabled id="takePicture">照相</button>
+            <div class="button-wrapper">
+                <button class="btn btn-lg" disabled id="takePicture"></button>
+            </div>
         </div>
         <div id="step2">
 
