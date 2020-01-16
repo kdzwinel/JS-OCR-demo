@@ -1,0 +1,22 @@
+{
+  "name": "js-ocr-demo",
+  "version": "1.0.0",
+  "description": "JS-OCR-demo ===========",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Envive/JS-OCR-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Envive/JS-OCR-demo/issues"
+  },
+  "homepage": "https://github.com/Envive/JS-OCR-demo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
