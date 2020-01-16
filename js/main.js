@@ -61,23 +61,13 @@
         var deferred = new $.Deferred();
         var videoSettings = {
             video: {
-                optional: [
-                    {
-                        width: { min: pictureWidth }
-                    },
-                    {
-                        height: { min: pictureHeight }
-                    }
-                ]
-            }
+                width: { min: pictureWidth },
+                height: { min: pictureHeight },
+                facingMode: {
+                    ideal: 'environment',
+                },
+            },
         };
-
-        //if rear camera is available - use it
-        if (rearCameraId) {
-            videoSettings.video.optional.push({
-                sourceId: rearCameraId
-            });
-        }
 
         navigator.mediaDevices.getUserMedia(videoSettings)
             .then(function (stream) {
@@ -104,7 +94,9 @@
                         deferred.resolve();
                     }
                 }, false);
-            }).catch(function () {
+            }).catch(function (error) {
+                alert(String(error));
+                console.log(error);
                 deferred.reject('There is no access to your camera, have you denied it?');
             });
 
