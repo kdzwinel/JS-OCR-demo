@@ -224,8 +224,7 @@
           processData: false,
           contentType: false,
           cache: false,
-          success: (data) => {
-            const { data } = data;
+          success: ({ data }) => {
             if (data.hasOwnProperty('TextDetections')) {
               const texts = data.TextDetections.map((item) => item.DetectedText);
               console.log(texts);
