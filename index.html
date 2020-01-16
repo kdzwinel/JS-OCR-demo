@@ -30,28 +30,12 @@
     <div class="alert alert-danger"><strong>Oops!</strong> <span></span></div>
     <div class="jumbotron">
         <div id="step1">
-            <h1><i class="glyphicon glyphicon-camera"></i></h1>
-
-            <p class="lead">
-                Take a good picture of a huge, printed text.
-                <i class="glyphicon glyphicon-question-sign help" data-placement="bottom"
-                   data-content="<img src='img/step1.png' />" data-html="true"></i>
-            </p>
-
             <figure class="not-ready">
                 <video autoplay></video>
             </figure>
-
-            <button class="btn btn-lg btn-success" disabled id="takePicture">Take a picture</button>
+            <button class="btn btn-lg btn-success" disabled id="takePicture">照相</button>
         </div>
         <div id="step2">
-            <h1><i class="glyphicon glyphicon-pencil"></i></h1>
-
-            <p class="lead">
-                Crop the picture and adjust it so that text is clearly visible.
-                <i class="glyphicon glyphicon-question-sign help" data-placement="bottom"
-                   data-content="<img src='img/step2.png' />" data-html="true"></i>
-            </p>
 
             <figure>
                 <canvas style="display:none"></canvas>
@@ -62,13 +46,9 @@
 
             <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"></p>
 
-            <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>
+            <button class="btn btn-lg btn-success" id="adjust" disabled>撷取</button>
         </div>
         <div id="step3">
-            <h1><i class="glyphicon glyphicon-text-height"></i></h1>
-
-            <p class="lead">You'll find the recognized text below.</p>
-
             <figure>
                 <canvas></canvas>
             </figure>
@@ -82,19 +62,19 @@
                 <p id="result"></p>
                 <footer></footer>
             </blockquote>
+            <div class="button-wrapper">
+                <!-- <button class="btn btn-lg btn-default" id="go-back">回到撷取</button> -->
+                <button class="btn btn-lg btn-default" id="start-over">回照相</button>
+            </div>
 
-            <button class="btn btn-lg btn-default" id="go-back">Go back</button>
-            <button class="btn btn-lg btn-default" id="start-over">Start over</button>
         </div>
     </div>
-
     <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#" data-step="1">#1 <i class="glyphicon glyphicon-camera"></i></a></li>
-            <li class="disabled"><a href="#" data-step="2">#2 <i class="glyphicon glyphicon-pencil"></i></a></li>
-            <li class="disabled"><a href="#" data-step="3">#3 <i class="glyphicon glyphicon-text-height"></i></a></li>
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#" data-step="1">照相 <i class="glyphicon glyphicon-camera"></i></a></li>
+            <li style="display: none" class="disabled"><a href="#" data-step="2">#2 <i class="glyphicon glyphicon-pencil"></i></a></li>
+            <li class="disabled"><a href="#" data-step="3">辨识 <i class="glyphicon glyphicon-text-height"></i></a></li>
         </ul>
-        <h3 class="text-muted">OCR demo</h3>
     </div>
 </div>
 <!-- /container -->

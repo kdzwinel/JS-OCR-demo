@@ -195,3 +195,76 @@ body.step3 #step1, body.step3 #step2 {
         transform: scale(1.0);
     }
 }
+
+@media screen and (max-width: 768px) {
+    html, body, .container {
+        height: 100%;
+    }
+
+    blockquote, #step2 p {
+        width: 100%;
+    }
+
+    #step1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    video {
+        height: calc(100% - 50px);
+    }
+
+    figure {
+        flex: 1;
+        height: 100%;
+    }
+
+    .header {
+        border-bottom: none;
+        border-top: 1px solid #e5e5e5;
+        padding-top: 10px;
+    }
+
+    .text-muted {
+        padding-bottom: 0 !important;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .jumbotron {
+        flex: 1;
+        margin-bottom: 5px;
+        overflow: auto;
+    }
+
+    .jumbotron > div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    .nav li {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        /* text-align: center; */
+    }
+
+    .nav li a {
+        max-width: 150px;
+    }
+
+    #takePicture {
+        height: 55px;
+        width: 100px;
+    }
+}

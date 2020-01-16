@@ -61,8 +61,8 @@
         var deferred = new $.Deferred();
         var videoSettings = {
             video: {
-                width: { min: pictureWidth },
-                height: { min: pictureHeight },
+                // width: { min: pictureWidth },
+                // height: { min: pictureHeight },
                 facingMode: {
                     ideal: 'environment',
                 },
@@ -163,26 +163,30 @@
 
     function step3() {
         var canvas = document.querySelector('#step3 canvas');
-        var step2Image = document.querySelector('#step2 img');
-        var cropData = $(step2Image).data().Jcrop.tellSelect();
+        // var step2Image = document.querySelector('#step2 img');
+        // var cropData = $(step2Image).data().Jcrop.tellSelect();
 
-        var scale = step2Image.width / $(step2Image).width();
+        // var scale = step2Image.width / $(step2Image).width();
 
         //draw cropped image on the canvas
-        canvas.width = cropData.w * scale;
-        canvas.height = cropData.h * scale;
+        // canvas.width = cropData.w * scale;
+        // canvas.height = cropData.h * scale;
+
+        canvas.width = pictureWidth;
+        canvas.height = pictureHeight;
 
         var ctx = canvas.getContext('2d');
-        ctx.drawImage(
-            step2Image,
-            cropData.x * scale,
-            cropData.y * scale,
-            cropData.w * scale,
-            cropData.h * scale,
-            0,
-            0,
-            cropData.w * scale,
-            cropData.h * scale);
+        ctx.drawImage(video, 0, 0);
+        // ctx.drawImage(
+        //     step2Image,
+        //     cropData.x * scale,
+        //     cropData.y * scale,
+        //     cropData.w * scale,
+        //     cropData.h * scale,
+        //     0,
+        //     0,
+        //     cropData.w * scale,
+        //     cropData.h * scale);
 
         var spinner = $('.spinner');
         spinner.show();
@@ -243,8 +247,10 @@
     });
 
     $('#takePicture').click(function () {
-        step2();
+        // step2();
         changeStep(2);
+        step3();
+        changeStep(3);
     });
 
     $('#adjust').click(function () {
