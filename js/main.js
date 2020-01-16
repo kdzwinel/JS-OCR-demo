@@ -186,6 +186,8 @@
         sendPic(canvas);
 
         canvas.height=document.body.clientHeight - 330;
+        ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0); 
 
         var spinner = $('.spinner');
         spinner.show();
