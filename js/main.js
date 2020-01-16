@@ -64,17 +64,10 @@
                 width: { min: pictureWidth },
                 height: { min: pictureHeight },
                 facingMode: {
-                    exact: 'environment',
+                    ideal: 'environment',
                 },
             },
         };
-
-        //if rear camera is available - use it
-        if (rearCameraId) {
-            videoSettings.video.optional.push({
-                sourceId: rearCameraId
-            });
-        }
 
         navigator.mediaDevices.getUserMedia(videoSettings)
             .then(function (stream) {
@@ -103,6 +96,7 @@
                 }, false);
             }).catch(function (error) {
                 alert(String(error));
+                console.log(error);
                 deferred.reject('There is no access to your camera, have you denied it?');
             });
 
