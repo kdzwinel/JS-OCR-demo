@@ -210,7 +210,7 @@
         const fData = new FormData();
         fData.append('image', obj);
         $.ajax({
-          url: 'http://94.237.73.77:8004/api/ocr/',
+          url: 'https://www.envivetw.com:8000/api/ocr/',
           type: 'POST',
           data: fData,
           enctype: 'multipart/form-data',
