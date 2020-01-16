@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>OCR demo</title>
-
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>OCR</title>
     <meta name="Description" content="Optical Character Recognition demo"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/jquery.Jcrop.min.css"/>
@@ -33,7 +31,9 @@
             <figure class="not-ready">
                 <video autoplay></video>
             </figure>
-            <button class="btn btn-lg btn-success" disabled id="takePicture">照相</button>
+            <div class="button-wrapper">
+                <button class="btn btn-lg" disabled id="takePicture"></button>
+            </div>
         </div>
         <div id="step2">
 
@@ -49,29 +49,42 @@
             <button class="btn btn-lg btn-success" id="adjust" disabled>撷取</button>
         </div>
         <div id="step3">
-            <figure>
+            <figure style="display: none;">
                 <canvas></canvas>
             </figure>
 
             <blockquote>
-                <div class="spinner">
+                <h3 class="text-center">录入体征</h3>
+                <div class="result-wrapper">
+                    <div id="sp">
+                        <div class="title">收缩压</div>
+                        <div class="value text-right">辨识中...</div>
+                    </div>
+                    <div id="dp">
+                        <div class="title">舒张压</div>
+                        <div class="value text-right">辨识中...</div>
+                    </div>
+                    <div id="pulse">
+                        <div class="title">心律</div>
+                        <div class="value text-right">辨识中...</div>
+                    </div>
+                </div>
+                <div class="spinner" style="display: none;">
                     <div class="bounce1"></div>
                     <div class="bounce2"></div>
                     <div class="bounce3"></div>
                 </div>
-                <p id="result"></p>
-                <footer></footer>
             </blockquote>
-            <div class="button-wrapper">
-                <!-- <button class="btn btn-lg btn-default" id="go-back">回到撷取</button> -->
+            <!-- <div class="button-wrapper">
+                <button class="btn btn-lg btn-default" id="go-back">回到撷取</button>
                 <button class="btn btn-lg btn-default" id="start-over">回照相</button>
-            </div>
+            </div> -->
 
         </div>
     </div>
     <div class="header">
         <ul class="nav nav-pills">
-            <li class="active"><a href="#" data-step="1">照相 <i class="glyphicon glyphicon-camera"></i></a></li>
+            <li class="active"><a href="#" data-step="3">照相 <i class="glyphicon glyphicon-camera"></i></a></li>
             <li style="display: none" class="disabled"><a href="#" data-step="2">#2 <i class="glyphicon glyphicon-pencil"></i></a></li>
             <li class="disabled"><a href="#" data-step="3">辨识 <i class="glyphicon glyphicon-text-height"></i></a></li>
         </ul>

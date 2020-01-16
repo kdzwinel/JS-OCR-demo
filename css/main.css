@@ -65,7 +65,7 @@ body {
 }
 
 .jumbotron blockquote {
-    border-left: 5px solid gray;
+    border-left: none;
     text-align: left;
 }
 
@@ -130,9 +130,7 @@ body.step3 #step1, body.step3 #step2 {
 }
 
 #step1 figure.not-ready video {
-    border: solid gray 1px;
-    width: 100%;
-    height: 300px;
+    /* border: solid gray 1px; */
 }
 
 #step1 figure.not-ready {
@@ -199,15 +197,26 @@ body.step3 #step1, body.step3 #step2 {
 @media screen and (max-width: 768px) {
     html, body, .container {
         height: 100%;
+        padding: 0;
+    }
+
+    .jumbotron {
+        background-color: #f8f8f8;
     }
 
     blockquote, #step2 p {
         width: 100%;
+        padding: 0;
+    }
+
+    blockquote footer:before {
+        display: none;
     }
 
     #step1 {
         display: flex;
         flex-direction: column;
+        background-color: #000;
     }
 
     video {
@@ -219,10 +228,15 @@ body.step3 #step1, body.step3 #step2 {
         height: 100%;
     }
 
+    .not-ready {
+        width: 100%;
+    }
+
     .header {
         border-bottom: none;
         border-top: 1px solid #e5e5e5;
         padding-top: 10px;
+        display: none;
     }
 
     .text-muted {
@@ -236,8 +250,11 @@ body.step3 #step1, body.step3 #step2 {
 
     .jumbotron {
         flex: 1;
-        margin-bottom: 5px;
+        margin-bottom: 0;
         overflow: auto;
+        padding: 0;
+        border-radius: 0 !important;
+        border: 0;
     }
 
     .jumbotron > div {
@@ -256,7 +273,6 @@ body.step3 #step1, body.step3 #step2 {
         flex: 1;
         display: flex;
         justify-content: center;
-        /* text-align: center; */
     }
 
     .nav li a {
@@ -264,7 +280,56 @@ body.step3 #step1, body.step3 #step2 {
     }
 
     #takePicture {
-        height: 55px;
-        width: 100px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border-radius: 25px;
+    }
+
+    #step1 .button-wrapper {
+        padding: 1px;
+        border: 1px solid #fff;
+        height: 60px;
+        width: 60px;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    #step3 h3 {
+        background-color: #fff;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+
+    #step3 {
+        /* align-items: flex-start; */
+        justify-content: start !important;
+        color: #111 !important;
+    }
+
+    .spinner {
+        display: none;
+    }
+
+    .result-wrapper > div {
+        padding: 1rem 2rem;
+        background-color: #fff;
+        display: flex;
+    }
+
+    .result-wrapper > div > div {
+        flex: 1;
+    }
+
+    .result-wrapper .value {
+        font-size: 14px;
+        color: #444 !important;
+    }
+
+    .result-wrapper > div:not(:last-child) {
+        border-bottom: 1px solid #e5e5e5;
     }
 }

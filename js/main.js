@@ -171,12 +171,20 @@
         //draw cropped image on the canvas
         // canvas.width = cropData.w * scale;
         // canvas.height = cropData.h * scale;
+        var maxW=512;
+        var maxH=512;
 
-        canvas.width = pictureWidth;
-        canvas.height = pictureHeight;
+        var scale=Math.min((maxW/pictureWidth),(maxH/pictureHeight));
+        var iwScaled=pictureWidth*scale;
+        var ihScaled=pictureHeight*scale;
+        canvas.width=iwScaled;
+        canvas.height=ihScaled;
 
+        console.log(canvas);
         var ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0);
+        ctx.drawImage(video, 0, 0); 
+        sendPic(canvas);
+
         // ctx.drawImage(
         //     step2Image,
         //     cropData.x * scale,
@@ -199,9 +207,58 @@
 
             //show the result
             spinner.hide();
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('#result').html('&bdquo;' + resultText + '&ldquo;');
             $('blockquote footer').text('(' + resultText.length + ' characters)');
         });
+    }
+
+    function sendPic(canvas) {
+      canvas.toBlob(function(obj) {
+        const fData = new FormData();
+        fData.append('image', obj);
+        $.ajax({
+          url: 'http://94.237.73.77:8004/api/ocr/',
+          type: 'POST',
+          data: fData,
+          enctype: 'multipart/form-data',
+          processData: false,
+          contentType: false,
+          cache: false,
+          success: (data) => {
+            console.log(data.data);
+            const texts = data.data.TextDetections.map((item) => item.DetectedText);
+            console.log(texts);
+            let target = '';
+            for (let a = 0; a < texts.length ; a++){
+              let element = texts[a];
+              console.log(element);
+              console.log(target);
+              if (['高压', '收缩压'].indexOf(element) > -1) {
+                console.log('1');
+                target = 'sp';
+              } else if (['低压', '舒张压'].indexOf(element) > -1) {
+                console.log('2');
+                target = 'dp'
+              } else if (['心律', '脉搏'].indexOf(element) > -1) {
+                console.log('3');
+                target = 'pulse';
+              } else if (/\d/.test(element) && target != '') {
+                console.log(`#${target} > value`);
+                $("#" + target + " > .value").html(element);
+                target = '';
+                if (target == 'pulse') {
+                  console.log('end');
+                  break;
+                }
+              }
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error);
+          }
+        });
+      }, "image/jpeg", 1);
+      
     }
 
     /*********************************
