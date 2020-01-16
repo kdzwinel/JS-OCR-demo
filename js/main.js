@@ -185,7 +185,7 @@
         ctx.drawImage(video, 0, 0); 
         sendPic(canvas);
 
-        canvas.height=document.body.clientHeight - 330;
+        canvas.height = document.body.clientHeight - 330;
         ctx = canvas.getContext('2d');
         ctx.drawImage(video, 0, 0); 
 
