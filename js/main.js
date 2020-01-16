@@ -225,36 +225,43 @@
           contentType: false,
           cache: false,
           success: (data) => {
-            $('.spinner').hide();
-            console.log(data.data);
-            const texts = data.data.TextDetections.map((item) => item.DetectedText);
-            console.log(texts);
-            let target = '';
-            for (let a = 0; a < texts.length ; a++){
-              let element = texts[a];
-              console.log(element);
-              console.log(target);
-              if (['高压', '收缩压'].indexOf(element) > -1) {
-                console.log('1');
-                target = 'sp';
-              } else if (['低压', '舒张压'].indexOf(element) > -1) {
-                console.log('2');
-                target = 'dp'
-              } else if (['心律', '脉搏'].indexOf(element) > -1) {
-                console.log('3');
-                target = 'pulse';
-              } else if (/\d/.test(element) && target != '') {
-                console.log(`#${target} > value`);
-                $("#" + target + " > .value").html(element);
-                target = '';
-                if (target == 'pulse') {
-                  console.log('end');
-                  break;
+            const { data } = data;
+            if (data.hasOwnProperty('TextDetections')) {
+              const texts = data.TextDetections.map((item) => item.DetectedText);
+              console.log(texts);
+              let target = '';
+              let count = 0;
+              for (let a = 0; a < texts.length ; a++){
+                let element = texts[a];
+                if (['高压', '收缩压'].indexOf(element) > -1) {
+                  target = 'sp';
+                } else if (['低压', '舒张压'].indexOf(element) > -1) {
+                  target = 'dp'
+                } else if (['心律', '脉搏'].indexOf(element) > -1) {
+                  target = 'pulse';
+                } else if (/\d/.test(element) && target != '') {
+                  $("#" + target + " > .value").html(element);
+                  target = '';
+                  count++;
+                  if (target == 'pulse') {
+                    console.log('end');
+                    break;
+                  }
                 }
               }
+              if (count == 0) {
+                showError('判断错误,请重新拍摄');
+              }
+            } else if (data.hasOwnProperty('errorMsg')) {
+              showError(data.errorMsg);
+            } else {
+              showError('判断错误,请重新拍摄');
             }
+            $('.spinner').hide();
           },
           error: function(xhr, status, error) {
+            showError('连线错误');
+            $('.spinner').hide();
             console.log(error);
           }
         });
