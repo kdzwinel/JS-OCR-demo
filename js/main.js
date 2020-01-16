@@ -185,16 +185,7 @@
         ctx.drawImage(video, 0, 0); 
         sendPic(canvas);
 
-        // ctx.drawImage(
-        //     step2Image,
-        //     cropData.x * scale,
-        //     cropData.y * scale,
-        //     cropData.w * scale,
-        //     cropData.h * scale,
-        //     0,
-        //     0,
-        //     cropData.w * scale,
-        //     cropData.h * scale);
+        canvas.height=document.body.clientHeight - 330;
 
         var spinner = $('.spinner');
         spinner.show();
@@ -292,6 +283,10 @@
         $('.alert').show().find('span').text(text);
     }
 
+    function hideError() {
+        $('.alert').hide();
+    }
+
     //handle brightness/contrast change
     $('#brightness, #contrast').on('change', function () {
         var brightness = $('#brightness').val() / 100;
@@ -328,6 +323,7 @@
 
     $('#start-over').click(function () {
         changeStep(1);
+        hideError();
     });
 
     $('.nav').on('click', 'a', function () {

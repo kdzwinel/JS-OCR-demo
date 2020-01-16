@@ -345,4 +345,8 @@ body.step3 #step1, body.step3 #step2 {
     .alert {
         margin-bottom: 0px;
     }
+
+    #preview-wrapper {
+        overflow: hidden;
+    }
 }
