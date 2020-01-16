@@ -199,7 +199,7 @@
 
             //show the result
             spinner.hide();
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('#result').html('&bdquo;' + resultText + '&ldquo;');
             $('blockquote footer').text('(' + resultText.length + ' characters)');
         });
     }

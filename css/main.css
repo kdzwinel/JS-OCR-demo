@@ -65,7 +65,7 @@ body {
 }
 
 .jumbotron blockquote {
-    border-left: 5px solid gray;
+    border-left: none;
     text-align: left;
 }
 
@@ -200,13 +200,23 @@ body.step3 #step1, body.step3 #step2 {
         padding: 0;
     }
 
+    .jumbotron {
+        background-color: #f8f8f8;
+    }
+
     blockquote, #step2 p {
         width: 100%;
+        padding: 0;
+    }
+
+    blockquote footer:before {
+        display: none;
     }
 
     #step1 {
         display: flex;
         flex-direction: column;
+        background-color: #000;
     }
 
     video {
@@ -243,7 +253,6 @@ body.step3 #step1, body.step3 #step2 {
         margin-bottom: 0;
         overflow: auto;
         padding: 0;
-        background-color: #000;
         border-radius: 0 !important;
         border: 0;
     }
@@ -278,7 +287,7 @@ body.step3 #step1, body.step3 #step2 {
         border-radius: 25px;
     }
 
-    .button-wrapper {
+    #step1 .button-wrapper {
         padding: 1px;
         border: 1px solid #fff;
         height: 60px;
@@ -288,5 +297,40 @@ body.step3 #step1, body.step3 #step2 {
         align-items: center;
         justify-content: center;
         margin-bottom: 25px;
+    }
+
+    #step3 h3 {
+        background-color: #fff;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+
+    #step3 {
+        /* align-items: flex-start; */
+        justify-content: start !important;
+        color: #111 !important;
+    }
+
+    .spinner {
+        display: none;
+    }
+
+    .result-wrapper > div {
+        padding: 1rem 2rem;
+        background-color: #fff;
+        display: flex;
+    }
+
+    .result-wrapper > div > div {
+        flex: 1;
+    }
+
+    .result-wrapper .value {
+        font-size: 14px;
+        color: #444 !important;
+    }
+
+    .result-wrapper > div:not(:last-child) {
+        border-bottom: 1px solid #e5e5e5;
     }
 }
